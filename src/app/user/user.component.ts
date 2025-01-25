@@ -1,0 +1,23 @@
+import { Component } from '@angular/core';
+
+import {DUMMY_USERS} from '../dummy-users';
+
+@Component({
+  selector: 'app-user',
+  standalone: true,
+  imports: [],
+  templateUrl: './user.component.html',
+  styleUrl: './user.component.css'
+})
+export class UserComponent {
+  selectedUser = DUMMY_USERS[1];
+
+  get imagePath() {
+    return 'assets/users/' + this.selectedUser.avatar
+  }
+
+  onSelectedUser() {
+    const randomIdx =  Math.floor(Math.random() * DUMMY_USERS.length)
+    this.selectedUser = DUMMY_USERS[randomIdx]
+  }
+}
